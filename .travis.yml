@@ -1,0 +1,16 @@
+before_script:
+  - wget https://github.com/openshift/source-to-image/releases/download/v1.1.13/source-to-image-v1.1.13-b54d75d3-linux-amd64.tar.gz
+  - tar xvzOf source-to-image-v1.1.13-b54d75d3-linux-amd64.tar.gz > s2i.bin
+  - sudo mv s2i.bin /usr/bin/s2i
+  - sudo chmod 755 /usr/bin/s2i
+
+script:
+  - make all
+
+notifications:
+  irc: "chat.freenode.net#bucharest-gold"
+
+branches:
+  only:
+  - master
+  - /^[8-9]+.*$/
