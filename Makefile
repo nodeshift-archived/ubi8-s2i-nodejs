@@ -1,4 +1,4 @@
-FROM=registry.redhat.io/ubi8/s2i-base
+FROM=registry.access.redhat.com/ubi8/s2i-base
 IMAGE_NAME=nodeshift/ubi8-s2i-nodejs
 
 # These values are changed in each version branch
