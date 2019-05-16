@@ -35,7 +35,10 @@ LABEL io.k8s.description="$DESCRIPTION" \
       com.redhat.deployments-dir="/opt/app-root/src" \
       com.redhat.dev-mode="DEV_MODE:false" \
       com.redhat.dev-mode.port="DEBUG_PORT:5858" \
-      maintainer="Lance Ball <lball@redhat.com>" \
+      maintainer="Lance Ball <lball@redhat.com>, \
+Daniel Bevenius <daniel.bevenius@gmail.com>, \
+Helio Frota <00hf11@gmail.com>, \
+Lucas Holmquist <lholmqui@redhat.com>" \
       summary="$SUMMARY" \
       description="$DESCRIPTION" \
       version="$NODE_VERSION" \
