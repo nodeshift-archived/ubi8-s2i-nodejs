@@ -2,7 +2,9 @@
 
 set -ex
 
-yum install --disableplugin=subscription-manager -y --setopt=tsflags=nodocs nss_wrapper python2
+INSTALL_PKGS="nss_wrapper python2"
+yum install --disableplugin=subscription-manager -y --setopt=tsflags=nodocs ${INSTALL_PKGS}
+export PYTHON=`which python2`
 
 # Ensure git uses https instead of ssh for NPM install
 # See: https://github.com/npm/npm/issues/5257
@@ -13,14 +15,15 @@ git config --system url."https://".insteadOf git://
 git config --system url."https://".insteadOf ssh://
 git config --list
 
-ls /opt/app-root
 yum remove -y nodejs
+
+### Community rpm installs:
 yum install -y /opt/app-root/rhoar-nodejs-${NODE_VERSION}-1.el8.x86_64.rpm
 yum install -y /opt/app-root/npm-${NPM_VERSION}-1.${NODE_VERSION}.1.el8.x86_64.rpm
-export PYTHON=`which python2`
 
-rpm -V nss_wrapper
+rpm -V ${INSTALL_PKGS}
 yum clean all -y
+
 ldconfig
 
 # Make sure npx is available
