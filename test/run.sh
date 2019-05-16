@@ -273,9 +273,18 @@ test_git_clone() {
 
 test_image_usage_label() {
   local expected="s2i build . nodeshift/ubi8-s2i-nodejs myapp"
+  local prod_expected="s2i build . rhoar-nodejs/nodejs-12-rhel8 myapp"
+  local failed=false
   echo "Checking image usage label ..."
   out=$(docker inspect --format '{{ index .Config.Labels "usage" }}' $BUILDER)
+
   if ! echo "${out}" | grep -q "${expected}"; then
+    if echo "${out}" | grep -q "${prod_expected}"; then
+      return 0;
+    else
+      echo "ERROR[docker inspect --format \"{{ index .Config.Labels \"usage\" }}\"] Expected '${prod_expected}', got '${out}'"
+      return 1
+    fi
     echo "ERROR[docker inspect --format \"{{ index .Config.Labels \"usage\" }}\"] Expected '${expected}', got '${out}'"
     return 1
   fi
