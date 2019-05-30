@@ -47,7 +47,6 @@ Lucas Holmquist <lholmqui@redhat.com>" \
 
 COPY ./s2i/ $STI_SCRIPTS_PATH
 COPY ./contrib/ /opt/app-root
-COPY rhoar-nodejs-12.2.0-1.el8.x86_64.rpm npm-6.9.0-1.12.2.0.1.el8.x86_64.rpm /opt/app-root/
 
 RUN /opt/app-root/etc/install_node.sh
 

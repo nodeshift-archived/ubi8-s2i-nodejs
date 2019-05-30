@@ -18,8 +18,8 @@ git config --list
 yum remove -y nodejs
 
 ### Community rpm installs:
-yum install -y /opt/app-root/rhoar-nodejs-${NODE_VERSION}-1.el8.x86_64.rpm
-yum install -y /opt/app-root/npm-${NPM_VERSION}-1.${NODE_VERSION}.1.el8.x86_64.rpm
+yum install -y https://github.com/nodeshift/node-rpm/releases/download/v${NODE_VERSION}-ubi/rhoar-nodejs-${NODE_VERSION}-1.el8.x86_64.rpm
+yum install -y https://github.com/nodeshift/node-rpm/releases/download/v${NODE_VERSION}-ubi/npm-${NPM_VERSION}-1.${NODE_VERSION}.1.el8.x86_64.rpm
 
 rpm -V ${INSTALL_PKGS}
 yum clean all -y
